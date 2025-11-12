@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">App Emprende ISTG</string>
+    <string name="title_activity_inicio">InicioActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">App Emprende ISTG</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Cerrar Sesión</string>
+    <string name="default_web_client_id" translatable="false">241500955505-6pdg51g6vikbe9b1sae6sko14jc95eak.apps.googleusercontent.com</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_mis_negocios">Mis Negocios</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="Ingresar">Ingresar</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_filtrado_busqueda">Filtrado de Búsqueda</string>
+    <string name="menu_compartir_app">Compartir Aplicación</string>
+
+    <string name="logo_app">Logo de la app</string>
+    <string name="logo_istg">Logo del ISTG</string>
+
+    <string name="mensaje_bievenida">Te da la Bienvenida a:</string>
+    <string name="nuevo_negocio">Agregar</string>
+    <string name="agregar">+</string>
+    <string name="eliminar">-</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="invitado">Invitado</string>
+    <string name="administrador">Administrador</string>
+    <string name="solicitudes_negocios">Solicitudes de negocios</string>
+
+    <string name="ingrese_nombre_item">Ingrese el nombre del ítem</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="campo_vacio">El campo no puede estar vacío</string>
+
+    <string name="spinner_default_prompt">Seleccione una opción</string>
+
+    <!-- Main activity xml -->
+    <string name="mensaje_main">Donde comienzan las grandes historias de éxito</string>
+</resources>

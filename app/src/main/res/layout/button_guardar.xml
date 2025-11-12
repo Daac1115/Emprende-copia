@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Diseño de botón para guardar los cambios de una categoría con sus ítems en GestionFiltradoBusquedaFragment -->
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/button_agregar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:icon="@drawable/icono_guardar"
+    app:iconTint="@null"
+    app:iconGravity="textStart"
+    android:text="" />

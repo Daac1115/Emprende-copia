@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Diseño de Spinner para mostrar cada elemento en la lista desplegable cuando el Spinner está abierto -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:padding="10dp"
+    android:textColor="@color/black"
+    android:background="@color/white"
+    android:gravity="start" />

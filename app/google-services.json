@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "241500955505",
+    "project_id": "appemprendeistgdev",
+    "storage_bucket": "appemprendeistgdev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241500955505:android:cb8351400271366d7dccd0",
+        "android_client_info": {
+          "package_name": "com.example.emprenderistg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241500955505-6pdg51g6vikbe9b1sae6sko14jc95eak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJJBdyqoJmaw7qhOJIj1i4s_sNwykhkZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241500955505-6pdg51g6vikbe9b1sae6sko14jc95eak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241500955505:android:28c67461df9020b37dccd0",
+        "android_client_info": {
+          "package_name": "istg.edu.ec.appEmprendeISTGDev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241500955505-6pdg51g6vikbe9b1sae6sko14jc95eak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJJBdyqoJmaw7qhOJIj1i4s_sNwykhkZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241500955505-6pdg51g6vikbe9b1sae6sko14jc95eak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/fondo">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.fragments.PerfilFragment"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="66dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="125dp"
+            android:layout_height="116dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/icono_persona"
+            app:border_color="@color/white"
+            app:border_width="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/txt_nombre"
+            android:layout_width="227dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="25sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.627"
+            app:layout_constraintStart_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/txt_Identificacion"
+            android:layout_width="354dp"
+            android:textStyle="italic"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/white"
+            android:drawableStart="@drawable/baseline_document_scanner_24"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:ems="10"
+            android:hint="RUC / CI"
+            android:maxLength="13"
+            android:inputType="number"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_nombre" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold|italic"
+            android:drawableStart="@drawable/baseline_school_24"
+            android:text="  Formación académica"
+            android:textColor="@color/colorTexto"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_Identificacion" />
+
+        <EditText
+            android:id="@+id/txt_TercerNivel"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:ems="10"
+            android:textStyle="italic"
+            android:hint="Estudios actuales"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <EditText
+            android:id="@+id/txt_secundaria"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:ems="10"
+            android:textStyle="italic"
+            android:hint="Secundaria"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_TercerNivel" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:textStyle="bold|italic"
+            android:drawableStart="@drawable/baseline_contact_phone_24"
+            android:text="  Información de contacto"
+            android:textColor="@color/colorTexto"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_secundaria" />
+
+        <EditText
+            android:id="@+id/txt_telefono"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/icono_telefono"
+            android:ems="10"
+            android:hint="Telefono"
+            android:textStyle="italic"
+            android:inputType="phone"
+            android:maxLength="16"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <EditText
+            android:id="@+id/txt_correo"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/icono_correo"
+            android:ems="10"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:maxLength="50"
+            android:minHeight="48dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_telefono" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:textStyle="bold|italic"
+            android:drawableStart="@drawable/sharp_groups_2_24"
+            android:text="  Redes sociales "
+            android:textColor="@color/colorTexto"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_correo" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="65dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/facebook"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <EditText
+            android:id="@+id/txt_facebook"
+            android:layout_width="293dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:ems="@integer/material_motion_duration_short_1"
+            android:textStyle="italic"
+            android:hint="Link_facebook"
+            android:inputType="textWebEmailAddress"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="65dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="128dp"
+            android:src="@drawable/instagram"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/txt_instagram"
+            android:layout_width="294dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:ems="@integer/material_motion_duration_short_1"
+            android:hint="Link_instagram"
+            android:textStyle="italic"
+            android:inputType="textUri"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/txt_facebook" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="65dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/tiktok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/txt_tiktok"
+            android:layout_width="289dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/textHint"
+            android:textSize="20sp"
+            android:ems="@integer/material_motion_duration_short_1"
+            android:hint="Link_TikTok"
+            android:inputType="textUri"
+            android:minHeight="48dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.458"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/txt_instagram" />
+
+        <Button
+            android:id="@+id/btnGuardarDatos"
+            android:layout_width="255dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="4dp"
+            android:text="Guardar"
+            android:textColor="#F6F3F3"
+            android:textSize="20sp"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tiktok" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

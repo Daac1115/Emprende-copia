@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.EmprendeIstg" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <item name="colorPrimary">@color/azul_navbar</item>
+        <item name="android:statusBarColor">@color/azul_navbar</item>
+
+        <item name="popupMenuStyle">@style/CustomPopupMenu</item>
+    </style>
+
+    <style name="Theme.EmprendeIstg" parent="Base.Theme.EmprendeIstg" />
+</resources>

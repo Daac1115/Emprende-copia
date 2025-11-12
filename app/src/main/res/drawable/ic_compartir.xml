@@ -1,0 +1,49 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="#000000">
+
+    <!-- Anillo exterior (se dibuja con stroke para que quede como contorno) -->
+    <path
+        android:pathData="M480,80 A400,400 0 1,0 480,880 A400,400 0 1,0 480,80 Z"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#000000"
+        android:strokeWidth="60"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+
+    <!-- Líneas que conectan el nodo izquierdo con los dos de la derecha -->
+    <path
+        android:pathData="M300,480 L620,300"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#000000"
+        android:strokeWidth="40"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+
+    <path
+        android:pathData="M300,480 L620,650"
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#000000"
+        android:strokeWidth="40"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+
+    <!-- Nodos (círculos llenos) -->
+    <!-- Nodo izquierdo (centro en 360,480, radio 60) -->
+    <path
+        android:pathData="M250,475 a60,60 0 1,0 120,0 a60,60 0 1,0 -120,0"
+        android:fillColor="#000000"/>
+
+    <!-- Nodo superior derecho (centro en 620,300, radio 60) -->
+    <path
+        android:pathData="M560,300 a60,60 0 1,0 120,0 a60,60 0 1,0 -120,0"
+        android:fillColor="#000000"/>
+
+    <!-- Nodo inferior derecho (centro en 620,660, radio 60)M560,660 -->
+    <path
+        android:pathData="M560,650 a60,60 0 1,0 120,0 a60,60 0 1,0 -120,0"
+        android:fillColor="#000000"/>
+</vector>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/perfilFragment"
+            android:icon="@drawable/icono_persona"
+            android:title="@string/menu_perfil" />
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="@string/menu_home" />
+
+        <item
+            android:id="@+id/misNegociosFragment"
+            android:icon="@drawable/ic_menu_mis_negocios"
+            android:title="@string/menu_mis_negocios" />
+
+        <item
+            android:id="@+id/filtroBusquedaFragment"
+            android:icon="@drawable/ic_menu_filtrado_busqueda"
+            android:title="@string/menu_filtrado_busqueda" />
+
+        <item
+            android:id="@+id/opcionesAdministradorFragment"
+            android:icon="@drawable/ic_menu_administrador"
+            android:title="@string/administrador"
+            android:visible="false" />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/share"
+            android:title="@string/menu_compartir_app" />
+    </group>
+</menu>

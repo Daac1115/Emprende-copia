@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/misNegociosFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.MisNegociosFragment"
+        android:label="Mis negocios"
+        tools:layout="@layout/fragment_mis_negocios" />
+
+    <fragment
+        android:id="@+id/agregarNegocioFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.AgregarNegocioFragment"
+        android:label="Agregar negocio"
+        tools:layout="@layout/fragment_agregar_negocio" />
+
+    <fragment
+        android:id="@+id/guiaFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.GuiaFragment"
+        android:label="Guía de uso"
+        tools:layout="@layout/fragment_guia" />
+
+    <fragment
+        android:id="@+id/filtroBusquedaFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.FiltroBusquedaFragment"
+        android:label="Filtrado de Búsqueda"
+        tools:layout="@layout/fragment_filtro_busqueda" />
+
+    <fragment
+        android:id="@+id/revisarPublicacionesFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.RevisarPublicacionesFragment"
+        android:label="Publicación"
+        tools:layout="@layout/fragment_revisar_publicaciones" >
+        <argument
+            android:name="publicacionId"
+            app:argType="string" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_revisarPublicacionesFragment_to_perfilPublicacion"
+            app:destination="@id/PerfilPublicacion" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/PerfilPublicacion"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.PerfilPublicacionFragment"
+        android:label="Perfil Externo"
+        tools:layout="@layout/fragment_perfil" />
+
+    <fragment
+        android:id="@+id/opcionesAdministradorFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.OpcionesAdministradorFragment"
+        android:label="@string/administrador"
+        tools:layout="@layout/fragment_opciones_administrador" />
+
+    <fragment
+        android:id="@+id/gestionFiltradoBusquedaFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.GestionFiltradoBusquedaFragment"
+        android:label="@string/administrador"
+        tools:layout="@layout/fragment_gestion_filtrado_busqueda" />
+
+    <fragment
+        android:id="@+id/solicitudesNegociosFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.SolicitudesNegociosFragment"
+        android:label="@string/administrador"
+        tools:layout="@layout/fragment_solicitudes_negocios">
+    </fragment>
+
+    <fragment
+        android:id="@+id/revisarSolicitudFragment"
+        android:name="istg.edu.ec.appEmprendeISTGDev.ui.fragments.RevisarSolicitudFragment"
+        android:label="Revisar Solicitud"
+        tools:layout="@layout/fragment_revisar_solicitud">
+
+        <action
+            android:id="@+id/action_revisarSolicitudFragment_to_perfilPublicacionFragment"
+            app:destination="@id/PerfilPublicacion" />
+    </fragment>
+
+
+</navigation>

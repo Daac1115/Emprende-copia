@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".ui.activitys.PantallaInicialActivity">
+
+  <VideoView
+      android:id="@+id/videoView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+  <ProgressBar
+      android:id="@+id/progress_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.948" />
+
+
+  <!--  &lt;!&ndash;<ImageView
+        android:id="@+id/logo_app"
+        android:layout_width="229dp"
+        android:layout_height="218dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/logo_app"
+        android:src="@drawable/logo_app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mensajeBienvenida" />&ndash;&gt;
+
+    &lt;!&ndash;
+      <Button
+          android:id="@+id/btn_siguiente"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="40dp"
+          android:backgroundTint="#03D6F3"
+          android:text="⮕"
+          android:textColor="@color/white"
+          android:textSize="24sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.498"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/logo_app"
+
+          antiguo tamaño de las imagenes
+          android:layout_width="200dp"
+          android:layout_height="209dp"
+          />&ndash;&gt;
+
+    <ImageView
+        android:id="@+id/logo_istg"
+        android:layout_width="229dp"
+        android:layout_height="218dp"
+        android:layout_marginTop="92dp"
+        android:contentDescription="@string/logo_istg"
+        android:src="@drawable/logo_istg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mensajeBienvenida"
+        android:layout_width="334dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/mensaje_bievenida"
+        android:textAlignment="center"
+        android:textColor="#230165"
+        android:textSize="48sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_istg" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="579dp" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--app:layout_constraintTop_toBottomOf="@+id/logo_app"-->

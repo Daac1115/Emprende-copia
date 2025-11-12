@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+
+    <!-- Nombre del Negocio -->
+    <TextView
+        android:id="@+id/tvNombreNegocio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Nombre del Negocio"
+        android:textColor="#009BBD"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Dueño y click para ver perfil -->
+    <TextView
+        android:id="@+id/tvVisitarPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Nombre del Propietario"
+        android:textColor="#0030AD"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Descripción -->
+    <TextView
+        android:id="@+id/tvDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Descripción del negocio"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <!-- Lista de productos -->
+    <TextView
+        android:id="@+id/tvProductos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Productos/Servicios y Precios"
+        android:textColor="#10CFCF"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <!-- RecyclerView solo para la lista de productos -->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvProductosServiciosPrecios"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="1dp"-->
+<!--        android:scrollbars="vertical" />-->
+
+    <!-- Productos / Servicios -->
+    <LinearLayout
+        android:id="@+id/lyProductos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/btnVerProductos"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/lupa"
+            android:contentDescription="Ver productos"/>
+
+        <TextView
+            android:id="@+id/btnProductos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ver productos"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+
+    <!-- Dirección -->
+    <TextView
+        android:id="@+id/tvDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Dirección:"
+        android:textColor="#10CFCF"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <!-- UbicacionLocal -->
+    <TextView
+        android:id="@+id/tvUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Ubicación del negocio"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <!-- RecyclerView solo para la lista de links con productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLinksProductosServicios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="6dp"
+        android:clipToPadding="false"/>
+
+    <!-- Si quieres luego debajo poner una imagen, la puedes descomentar -->
+    <!--
+    <ImageView
+        android:id="@+id/ivEjemplo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ejemplo"
+        android:scaleType="centerCrop"
+        android:contentDescription="Imagen del negocio"/>
+    -->
+
+    <!-- Botones de acción (guardar, favorito, compartir) -->
+    <LinearLayout
+        android:id="@+id/lyAcciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <ImageButton
+            android:id="@+id/btnFavorito"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_comentar"
+            android:background="@android:color/transparent"
+            android:contentDescription="Favorito"/>
+
+        <ImageButton
+            android:id="@+id/btnGuardar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_favorito"
+            android:background="@android:color/transparent"
+            android:contentDescription="Guardar"/>
+
+        <ImageButton
+            android:id="@+id/btnCompartir"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_compartir"
+            android:background="@android:color/transparent"
+            android:contentDescription="Compartir"/>
+    </LinearLayout>
+
+
+</LinearLayout>
+
+    <!-- Lupa -->

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/tvTituloDialogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Productos/Servicios"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_alignParentStart="true"/>
+
+    <ImageButton
+        android:id="@+id/btn_close"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="Cerrar"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:tint="#FF0000"/>
+
+
+    <LinearLayout
+        android:id="@+id/layoutEnviarNotas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTituloDialogo"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="8dp"
+        android:background="#FFF5F5F5"
+        android:elevation="2dp">
+
+        <EditText
+            android:id="@+id/etNotas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Deseo cotizar: o escribe una nota o pedido..."
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/btnEnviarWhatsApp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_send"
+            android:tint="#25D366"
+            android:contentDescription="Enviar a WhatsApp" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkSeleccionarTodo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutEnviarNotas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:buttonTint="@color/black"
+        android:text="Seleccionar Todo"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProductosServiciosPrecios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkSeleccionarTodo"
+        android:layout_marginTop="5dp"
+        android:scrollbars="vertical" />
+</RelativeLayout>

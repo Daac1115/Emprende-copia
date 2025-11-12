@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:id="@+id/constraintLayout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           tools:context=".ui.fragments.AgregarNegocioFragment">
+
+              <!-- Título -->
+              <TextView
+                  android:id="@+id/textViewTitulo"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="20dp"
+                  android:text="@string/nuevo_negocio"
+                  android:textAlignment="center"
+                  android:textColor="#009BBD"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+              <!-- Título Nombre del negocio -->
+              <TextView
+                  android:id="@+id/txt_nombre_local"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Nombre del local"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.07"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
+
+              <!-- Campo para ingresar el nombre del negocio -->
+              <EditText
+                  android:id="@+id/nombre_local_edittext"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:hint="(Máx. 100 caracteres)"
+                  android:inputType="textMultiLine"
+                  android:maxLength="100"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_nombre_local" />
+
+              <!-- Título Descipción del negocio -->
+              <TextView
+                  android:id="@+id/txt_descripcion"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Descripción"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.056"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/nombre_local_edittext" />
+
+              <!-- Campo para ingresar una descripción del negocio -->
+              <EditText
+                  android:id="@+id/descripcion_edittext"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:ems="10"
+                  android:gravity="start|top"
+                  android:hint="(Máx. 350 caracteres)"
+                  android:inputType="textMultiLine"
+                  android:maxLength="350"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_descripcion" />
+
+              <!-- Título Numero de Whastsapp del negocio -->
+
+
+              <!-- Título Categoría del negocio -->
+
+              <TextView
+                  android:id="@+id/txt_numero"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Número de Whatsapp"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.089"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/descripcion_edittext" />
+
+              <EditText
+                  android:id="@+id/numero_edittext"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:ems="10"
+                  android:gravity="start|top"
+                  android:hint="(Máx. 10 caracteres)"
+                  android:inputType="phone"
+                  android:maxLength="10"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_numero" />
+
+              <TextView
+                  android:id="@+id/txt_categoria"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Categoría"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.052"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/numero_edittext" />
+
+              <!-- Spinner para cargar las categorías del Firebase -->
+              <Spinner
+                  android:id="@+id/spinner_categorias"
+                  android:layout_width="350dp"
+                  android:layout_height="45dp"
+                  android:layout_marginTop="10dp"
+                  android:background="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/black"
+                  android:textSize="20sp"
+                  android:paddingStart="10dp"
+                  android:paddingEnd="10dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_categoria" />
+
+              <!-- Título Dirección del negocio -->
+              <TextView
+                  android:id="@+id/txt_direccion"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Dirección"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.051"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/spinner_categorias" />
+
+              <!-- Campo para ingresar la dirección del negocio -->
+              <EditText
+                  android:id="@+id/direccion_edittext"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:ems="10"
+                  android:gravity="start|top"
+                  android:hint="(Máx. 150 caracteres)"
+                  android:inputType="textMultiLine"
+                  android:maxLength="150"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_direccion" />
+
+              <!-- Título Horario de atención del negocio -->
+              <TextView
+                  android:id="@+id/txt_horario_atencion"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Horario de atención"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.08"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/direccion_edittext" />
+
+              <!-- Campo que muestra el horario de atención del negocio -->
+              <EditText
+                  android:id="@+id/horario_atencion_editetxt"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:focusable="false"
+                  android:hint="Día Hora Inicio - Hora Fin"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_horario_atencion" />
+
+              <!-- Botón para agregar día y hora de atención -->
+              <Button
+                  android:id="@+id/btn_horario_atencion"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="#0047FF"
+                  android:text="@string/agregar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.15"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/horario_atencion_editetxt" />
+
+              <!-- Botón para eliminar día y hora de atención -->
+              <Button
+                  android:id="@+id/btn_borrar_horario"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="@color/red"
+                  android:text="@string/eliminar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.186"
+                  app:layout_constraintStart_toEndOf="@+id/btn_horario_atencion"
+                  app:layout_constraintTop_toBottomOf="@+id/horario_atencion_editetxt" />
+
+              <!-- Título Productos/Servicios del negocio -->
+              <TextView
+                  android:id="@+id/txt_productos_servicios"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Productos/Servicios"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.083"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/btn_horario_atencion" />
+
+              <!-- Campo que muestra los productos/servicios con sus precios del negocio -->
+              <EditText
+                  android:id="@+id/descripcion_productos_servicios_edittext"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:focusable="false"
+                  android:hint="Productos/Servicios y Precios"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_productos_servicios" />
+
+              <!-- Botón para agregar productos/servicios con sus precios -->
+              <Button
+                  android:id="@+id/btn_descripcion_productos_servicios"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="#0047FF"
+                  android:text="@string/agregar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.15"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/descripcion_productos_servicios_edittext" />
+
+              <!-- Botón para eliminar productos/servicios con sus precios -->
+              <Button
+                  android:id="@+id/btn_borrar_descripcion_producto_servicio"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="@color/red"
+                  android:text="@string/eliminar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.186"
+                  app:layout_constraintStart_toEndOf="@+id/btn_descripcion_productos_servicios"
+                  app:layout_constraintTop_toBottomOf="@+id/descripcion_productos_servicios_edittext" />
+
+              <!-- Campo que muestra los enlaces (Drive) de productos/servicios del negocio -->
+              <EditText
+                  android:id="@+id/enlaces_productos_edittext"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:focusable="false"
+                  android:hint="Enlaces Drive de sus productos/servicios"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/btn_borrar_descripcion_producto_servicio" />
+
+              <!-- Botón para agregar enlaces (Drive) de productos/servicios -->
+              <Button
+                  android:id="@+id/btn_productos_servicios"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="#0047FF"
+                  android:text="@string/agregar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.15"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/enlaces_productos_edittext" />
+
+              <!-- Botón para eliminar enlaces (Drive) de productos/servicios -->
+              <Button
+                  android:id="@+id/btn_borrar_producto_servicio"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="@color/red"
+                  android:text="@string/eliminar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.186"
+                  app:layout_constraintStart_toEndOf="@+id/btn_productos_servicios"
+                  app:layout_constraintTop_toBottomOf="@+id/enlaces_productos_edittext" />
+
+              <!-- Título Enlaces externos (Redes sociales) del negocio -->
+              <TextView
+                  android:id="@+id/txt_enlaces_externos"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:text="Enlaces externos"
+                  android:textAlignment="viewStart"
+                  android:textColor="#0035BC"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.07"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/btn_productos_servicios" />
+
+              <!-- Campo que muestra los enlaces externos (Redes sociales) -->
+              <EditText
+                  android:id="@+id/enlaces_externos_edittext"
+                  android:layout_width="350dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="8dp"
+                  android:focusable="false"
+                  android:hint="Redes sociales"
+                  android:padding="8dp"
+                  android:backgroundTint="@color/white"
+                  android:textColor="@color/black"
+                  android:textColorHint="@color/textHint"
+                  android:textSize="20sp"
+                  android:minHeight="48dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.262"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/txt_enlaces_externos" />
+
+              <!-- Botón para agregar enlaces externos (Redes sociales) -->
+              <Button
+                  android:id="@+id/btn_enlaces_externos"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="#0047FF"
+                  android:text="@string/agregar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.15"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/enlaces_externos_edittext" />
+
+              <!-- Botón para eliminar enlaces externos (Redes sociales) -->
+              <Button
+                  android:id="@+id/btn_borrar_enlace"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="16dp"
+                  android:backgroundTint="@color/red"
+                  android:text="@string/eliminar"
+                  android:textAlignment="center"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  android:textStyle="bold"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.186"
+                  app:layout_constraintStart_toEndOf="@+id/btn_enlaces_externos"
+                  app:layout_constraintTop_toBottomOf="@+id/enlaces_externos_edittext" />
+
+              <!-- RecyclerView para mostrar el comentario del administrado (publicación existente) -->
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/recyclerViewComentario"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_marginTop="20dp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.498"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/btn_enlaces_externos" />
+
+              <!-- Botón para enviar la solicitud -->
+              <Button
+                  android:id="@+id/btn_enviar"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="20dp"
+                  android:backgroundTint="#0035BC"
+                  android:text="Enviar"
+                  android:textColor="#FFFFFF"
+                  android:textSize="24sp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.12"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/recyclerViewComentario" />
+
+              <!-- Botón para cancelar y regresar al anterior fragment -->
+              <Button
+                  android:id="@+id/btn_cancelar"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:backgroundTint="#FF0000"
+                  android:layout_marginTop="20dp"
+                  android:text="Cancelar"
+                  android:textColor="@color/white"
+                  android:textSize="24sp"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintHorizontal_bias="0.186"
+                  app:layout_constraintStart_toEndOf="@+id/btn_enviar"
+                  app:layout_constraintTop_toBottomOf="@+id/recyclerViewComentario" />
+
+              <View
+                  android:id="@+id/space"
+                  android:layout_width="0dp"
+                  android:layout_height="30dp"
+                  android:layout_marginTop="20dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/btn_enviar"/>
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Diseño para mostrar el comentario del administrador en AgregarNegocioFragment (publicación existente) -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Comentario del Administrador -->
+    <EditText
+        android:id="@+id/etComentarioEdit"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_comentario"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:hint="Comentario"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/textHint"
+        android:textSize="20sp"
+        android:minHeight="48dp" />
+
+</LinearLayout>

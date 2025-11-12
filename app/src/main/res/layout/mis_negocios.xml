@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Diseño para mostrar información de las publicaciones del usuario en MisNegociosFragment -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="0dp"
+    android:layout_marginVertical="6dp"
+    android:background="@color/white"
+    android:elevation="1dp"
+    android:padding="14dp">
+
+    <!-- Nombre del negocio/emprendimiento -->
+    <TextView
+        android:id="@+id/textViewNombreNegocio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Negocio"
+        android:textColor="#005585"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Título Ubicación del negocio/emprendimiento -->
+    <TextView
+        android:id="@+id/stringUbicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Ubicación"
+        android:textColor="#10CFCF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/textViewNombreNegocio"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Ubicación del negocio/emprendimiento -->
+    <TextView
+        android:id="@+id/textViewUbicacionNegocio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Ubicación del local"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/stringUbicacion"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Título Estado del negocio/emprendimiento -->
+    <TextView
+        android:id="@+id/stringEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Estado: "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewUbicacionNegocio" />
+
+    <!-- Estado del negocio/emprendimiento -->
+    <TextView
+        android:id="@+id/textViewEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:text="Aprobado/Rechazado"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/stringEstado"
+        app:layout_constraintTop_toBottomOf="@id/textViewUbicacionNegocio" />
+
+    <!-- Opción para editar la publicación -->
+    <ImageView
+        android:id="@+id/imageViewEditar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewNombreNegocio"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icono_editar_negocio" />
+
+    <!-- Opción para borrar (lógico) la publicación -->
+    <ImageView
+        android:id="@+id/imageViewBorrar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewNombreNegocio"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEditar"
+        app:srcCompat="@drawable/icono_borrar_negocio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
