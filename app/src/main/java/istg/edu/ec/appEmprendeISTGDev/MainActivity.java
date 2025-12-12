@@ -1,5 +1,6 @@
-package istg.edu.ec.appEmprendeISTGDev;
+package istg.edu.ec.appEmprendeISTGDev; // Asegúrate de que este paquete sea correcto
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -8,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -23,6 +23,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+// Asegúrate de tener esta clase de utilidad o eliminar la línea si no la usas
+import static istg.edu.ec.appEmprendeISTGDev.utils.StatusBarUtilsKt.setStatusBarColor;
+
 import istg.edu.ec.appEmprendeISTGDev.ui.activitys.Invitado;
 import istg.edu.ec.appEmprendeISTGDev.viewModel.UserViewModel;
 
@@ -33,17 +36,19 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "MainActivity";
+
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
-    UserViewModel userViewModel;
-    FirebaseUser currentUser;
+    private UserViewModel userViewModel; // Asegúrate de tener esta clase creada
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Cambiar color de barra de estado (requiere tu utilidad StatusBarUtilsKt)
         setStatusBarColor(this, R.color.white, true);
 
 
@@ -55,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail() // Solicita la dirección de correo electrónico
                 .build();
 
-
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
         // Inicializa la instancia de FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Configura el botón para iniciar sesión con invitado
-           findViewById(R.id.btn_invitado).setOnClickListener(view -> {
-               Intent intent = new Intent(MainActivity.this, Invitado.class);
-               intent.putExtra("evento", "invitado"); // Enviamos el nombre del evento
-               startActivity(intent);
+        // Configura el botón para iniciar sesión como invitado
+        findViewById(R.id.btn_invitado).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, Invitado.class);
+            intent.putExtra("evento", "invitado");
+            startActivity(intent);
         });
 
         progressDialog = new ProgressDialog(this);
@@ -85,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         // Verifica si hay un usuario actualmente autenticado
-         currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             navigateToInicioActivity();
         }
@@ -107,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account); // Autentica con Firebase usando la cuenta de Google
+                firebaseAuthWithGoogle(account); // Autentica con Firebase
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
                 Toast.makeText(this, "Google sign in failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -131,10 +136,12 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user != null) {
                             String email = user.getEmail();
-                            // Verifica si el correo electrónico es válido
-                            if (email != null && (email.endsWith("@gmail.com") || email.endsWith("@est.istg.edu.ec") || email.endsWith("@istg.edu.ec"))) {
+                            // Verifica si el correo electrónico es institucional o gmail
+                            if (email != null && (email.endsWith("@gmail.com") ||
+                                    email.endsWith("@est.istg.edu.ec") ||
+                                    email.endsWith("@istg.edu.ec"))) {
                                 Toast.makeText(MainActivity.this, "Autenticación exitosa.", Toast.LENGTH_SHORT).show();
-                                navigateToInicioActivity(); // redirige a la actividad de inicio
+                                navigateToInicioActivity();
                             } else {
                                 showInvalidEmailAlert();
                                 mAuth.signOut();
@@ -167,8 +174,8 @@ public class MainActivity extends AppCompatActivity {
 
     // metodo paralerta si no hay conexión a Internet
     private void showNoInternetConnectionAlert() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Sin conexión a Internet")
+        new AlertDialog.Builder(this)
+                .setTitle("Sin conexión a Internet")
                 .setMessage("Revisa tu conexión a Internet y vuelve a intentarlo.")
                 .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
                 .setCancelable(false)
@@ -177,8 +184,8 @@ public class MainActivity extends AppCompatActivity {
 
     //metodo si el correo electrónico no es válido
     private void showInvalidEmailAlert() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Correo electrónico no válido")
+        new AlertDialog.Builder(this)
+                .setTitle("Correo electrónico no válido")
                 .setMessage("Solo se permite el inicio de sesión a estudiantes y Docentes del ISTG")
                 .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
                 .setCancelable(false)

@@ -7,14 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.VideoView
 import androidx.core.content.ContextCompat
+import com.google.firebase.messaging.FirebaseMessaging
 import istg.edu.ec.appEmprendeISTGDev.MainActivity
 import istg.edu.ec.appEmprendeISTGDev.R
 import istg.edu.ec.appEmprendeISTGDev.utils.setStatusBarColor
-
 
 class PantallaInicialActivity : AppCompatActivity() {
 
@@ -28,7 +29,22 @@ class PantallaInicialActivity : AppCompatActivity() {
 
         setStatusBarColor(R.color.white, lightIcons = true)
 
-        // Inicializar VideoView
+        // ------------------------------
+        // 🔥 OBTENER TOKEN FCM AUTOMÁTICAMENTE
+        // ------------------------------
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("TOKEN_ERROR", "Error obteniendo token", task.exception)
+                return@addOnCompleteListener
+            }
+
+            val token = task.result
+            Log.d("TOKEN_MANUAL", "Token generado: $token")
+        }
+
+        // ------------------------------
+        // 🎬 Inicializar VideoView
+        // ------------------------------
         videoView = findViewById(R.id.videoView)
         val videoUri = Uri.parse("android.resource://${packageName}/${R.raw.inicial}")
         videoView.setVideoURI(videoUri)
@@ -37,18 +53,22 @@ class PantallaInicialActivity : AppCompatActivity() {
             mediaPlayer.start()
         }
 
-        // Inicializar ProgressBar
+        // ------------------------------
+        // ⏳ Inicializar ProgressBar
+        // ------------------------------
         progressBar = findViewById(R.id.progress_bar)
 
         // Cambiar color del círculo giratorio
         progressBar.indeterminateDrawable.setColorFilter(
-            ContextCompat.getColor(this, R.color.navbar), // <-- este es tu color personalizado
+            ContextCompat.getColor(this, R.color.navbar),
             android.graphics.PorterDuff.Mode.SRC_IN
         )
 
         showLoading()
 
-        // Después de 3 segundos, ocultar la barra y cambiar de actividad
+        // ------------------------------
+        // ⏭ Cambiar de pantalla después de 3.6 segundos
+        // ------------------------------
         Handler(Looper.getMainLooper()).postDelayed({
             hideLoading()
             val intent = Intent(this, MainActivity::class.java)

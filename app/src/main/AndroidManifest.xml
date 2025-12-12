@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:allowBackup="true"
@@ -37,14 +38,9 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Acepta deep links para perfiles (app://profile/...) -->
-                <data
-                    android:host="profile"
-                    android:scheme="app" />
-                <!-- Acepta deep links para publicaciones (app://publication/...) -->
-                <data
-                    android:host="publication"
-                    android:scheme="app" />
+
+                <data android:host="profile" android:scheme="app" />
+                <data android:host="publication" android:scheme="app" />
             </intent-filter>
         </activity>
 
@@ -54,6 +50,15 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <!-- SERVICIO DE FIREBASE MESSAGING -->
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <!--
         NOTA: Las siguientes declaraciones de Fragment como <activity> han sido COMENTADAS.

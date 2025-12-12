@@ -1,13 +1,16 @@
 package istg.edu.ec.appEmprendeISTGDev;
 
 // Imports de tu código original
+import android.Manifest; // <-- IMPORTANTE NUEVO IMPORT
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager; // <-- IMPORTANTE NUEVO IMPORT
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.Build; // <-- IMPORTANTE NUEVO IMPORT
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -17,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher; // <-- IMPORTANTE NUEVO IMPORT
+import androidx.activity.result.contract.ActivityResultContracts; // <-- IMPORTANTE NUEVO IMPORT
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
@@ -47,8 +52,8 @@ import istg.edu.ec.appEmprendeISTGDev.viewModel.PerfilsViewModel;
 import istg.edu.ec.appEmprendeISTGDev.viewModel.PermisosViewModel;
 import istg.edu.ec.appEmprendeISTGDev.viewModel.UserViewModel;
 import istg.edu.ec.appEmprendeISTGDev.data.model.PerfilModel;
-import istg.edu.ec.appEmprendeISTGDev.utils.DeepLinkManager; // <-- IMPORT AGREGADO
-import androidx.core.view.WindowCompat; // <-- Importar
+import istg.edu.ec.appEmprendeISTGDev.utils.DeepLinkManager;
+import androidx.core.view.WindowCompat;
 
 
 import static istg.edu.ec.appEmprendeISTGDev.utils.StatusBarUtilsKt.setStatusBarColor;
@@ -72,20 +77,34 @@ public class InicioActivity extends AppCompatActivity {
     private AppUpdateManager appUpdateManager;
     private static final int MY_REQUEST_CODE = 100; // Código para la actualización
 
+    // --- CÓDIGO NUEVO: Lanzador de permisos ---
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    Log.d("InicioActivity", "Permiso de notificaciones concedido");
+                } else {
+                    Log.d("InicioActivity", "Permiso de notificaciones denegado");
+                }
+            });
+    // ------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // --- AÑADE ESTA LÍNEA AQUÍ ---
         // Esto deshabilita el "edge-to-edge" y restaura el comportamiento anterior.
         WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
 
-        setStatusBarColor(this, R.color.azul_navbar, false); // <-- CAMBIA 'true' POR 'false'
+        setStatusBarColor(this, R.color.azul_navbar, false);
 
         // --- INICIAR VERIFICACIÓN DE ACTUALIZACIÓN ---
         checkForAppUpdate();
         // ---
+
+        // --- CÓDIGO NUEVO: Pedir permiso al iniciar ---
+        // Se pone aquí para asegurar que al entrar al Dashboard se verifique el permiso
+        askNotificationPermission();
+        // ----------------------------------------------
 
         // --- Inyección de vistas y ViewModels ---
         sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
@@ -318,4 +337,21 @@ public class InicioActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    // --- CÓDIGO NUEVO: Lógica para pedir permisos ---
+    private void askNotificationPermission() {
+        // Solo es necesario a partir de Android 13 (API 33)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                // Permiso ya concedido. No se hace nada (o se podría configurar algo).
+            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+                // El usuario ya lo rechazó antes, se pide de nuevo explicando o lanzando el modal directamente
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            } else {
+                // Primera vez que se pide
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        }
+    }
+    // ------------------------------------------------
 }
