@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="istg.edu.ec.appEmprendeISTGDev">
 
+    <!-- PERMISOS -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
@@ -18,6 +19,7 @@
         android:theme="@style/Theme.EmprendeIstg"
         tools:targetApi="31">
 
+        <!-- ACTIVIDAD PRINCIPAL (LAUNCHER) -->
         <activity
             android:name=".ui.activitys.PantallaInicialActivity"
             android:exported="true">
@@ -27,15 +29,17 @@
             </intent-filter>
         </activity>
 
+        <!-- INICIO + DEEP LINKS -->
         <activity
             android:name=".InicioActivity"
             android:exported="true"
             android:label="@string/title_activity_inicio"
             android:theme="@style/Theme.EmprendeIstg.NoActionBar">
 
-            <!-- FILTRO PARA RECIBIR DEEP LINKS DE PERFIL Y PUBLICACIÓN -->
+            <!-- Deep links: profile & publication -->
             <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -44,14 +48,17 @@
             </intent-filter>
         </activity>
 
+        <!-- INVITADO -->
         <activity
             android:name=".ui.activitys.Invitado"
             android:exported="false" />
+
+        <!-- LOGIN PRINCIPAL -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
 
-        <!-- SERVICIO DE FIREBASE MESSAGING -->
+        <!-- SERVICIO FIREBASE MESSAGING -->
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">

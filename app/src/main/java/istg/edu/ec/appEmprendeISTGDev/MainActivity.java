@@ -1,6 +1,5 @@
-package istg.edu.ec.appEmprendeISTGDev; // Asegúrate de que este paquete sea correcto
+package istg.edu.ec.appEmprendeISTGDev;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -9,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+// CAMBIO IMPORTANTE: Usamos androidx para que las alertas se vean modernas
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -23,14 +24,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-// Asegúrate de tener esta clase de utilidad o eliminar la línea si no la usas
-import static istg.edu.ec.appEmprendeISTGDev.utils.StatusBarUtilsKt.setStatusBarColor;
-
 import istg.edu.ec.appEmprendeISTGDev.ui.activitys.Invitado;
 import istg.edu.ec.appEmprendeISTGDev.viewModel.UserViewModel;
 
+// Asegúrate de que esta ruta sea correcta en tu proyecto
 import static istg.edu.ec.appEmprendeISTGDev.utils.StatusBarUtilsKt.setStatusBarColor;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
-    private UserViewModel userViewModel; // Asegúrate de tener esta clase creada
+    private UserViewModel userViewModel;
     private FirebaseUser currentUser;
 
     @Override
@@ -48,16 +46,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Cambiar color de barra de estado (requiere tu utilidad StatusBarUtilsKt)
+        // Cambiar color de barra de estado a blanco con íconos oscuros (true)
         setStatusBarColor(this, R.color.white, true);
-
 
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         // Configuración para Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)) // Solicita el ID del token
-                .requestEmail() // Solicita la dirección de correo electrónico
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -96,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     // Método para iniciar sesión con Google
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -115,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account); // Autentica con Firebase
             } catch (ApiException e) {
                 Log.w(TAG, "Google sign in failed", e);
-                Toast.makeText(this, "Google sign in failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Error al iniciar sesión con Google.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -126,17 +122,15 @@ public class MainActivity extends AppCompatActivity {
 
         progressDialog.show();
 
-        // Crea las credenciales de autenticación usando el token de la cuenta de Google
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     progressDialog.dismiss();
                     if (task.isSuccessful()) {
-                        // La autenticación fue exitosa
                         FirebaseUser user = mAuth.getCurrentUser();
                         if (user != null) {
                             String email = user.getEmail();
-                            // Verifica si el correo electrónico es institucional o gmail
+                            // Verifica correos institucionales o gmail
                             if (email != null && (email.endsWith("@gmail.com") ||
                                     email.endsWith("@est.istg.edu.ec") ||
                                     email.endsWith("@istg.edu.ec"))) {
@@ -144,25 +138,24 @@ public class MainActivity extends AppCompatActivity {
                                 navigateToInicioActivity();
                             } else {
                                 showInvalidEmailAlert();
+                                // Si no es válido, cerramos la sesión inmediatamente
                                 mAuth.signOut();
                                 mGoogleSignInClient.signOut();
                             }
                         }
                     } else {
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
-                        Toast.makeText(MainActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Error de autenticación.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    // Método para navegar a la actividad de inicio
     private void navigateToInicioActivity() {
         Intent intent = new Intent(MainActivity.this, InicioActivity.class);
         startActivity(intent);
         finish();
     }
 
-    // Método para verificar la conexión a Internet
     private boolean isConnectedToInternet() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
@@ -172,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    // metodo paralerta si no hay conexión a Internet
+    // Alerta moderna (AppCompat)
     private void showNoInternetConnectionAlert() {
         new AlertDialog.Builder(this)
                 .setTitle("Sin conexión a Internet")
@@ -182,12 +175,12 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    //metodo si el correo electrónico no es válido
+    // Alerta moderna (AppCompat)
     private void showInvalidEmailAlert() {
         new AlertDialog.Builder(this)
-                .setTitle("Correo electrónico no válido")
-                .setMessage("Solo se permite el inicio de sesión a estudiantes y Docentes del ISTG")
-                .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
+                .setTitle("Acceso Restringido")
+                .setMessage("Solo se permite el inicio de sesión a estudiantes y docentes del ISTG.")
+                .setPositiveButton("Entendido", (dialog, which) -> dialog.dismiss())
                 .setCancelable(false)
                 .show();
     }

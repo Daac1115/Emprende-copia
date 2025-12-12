@@ -1,16 +1,16 @@
 package istg.edu.ec.appEmprendeISTGDev;
 
 // Imports de tu código original
-import android.Manifest; // <-- IMPORTANTE NUEVO IMPORT
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager; // <-- IMPORTANTE NUEVO IMPORT
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.os.Build; // <-- IMPORTANTE NUEVO IMPORT
+import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -20,11 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.activity.result.ActivityResultLauncher; // <-- IMPORTANTE NUEVO IMPORT
-import androidx.activity.result.contract.ActivityResultContracts; // <-- IMPORTANTE NUEVO IMPORT
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat; // Importante para diseño moderno
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -53,8 +53,6 @@ import istg.edu.ec.appEmprendeISTGDev.viewModel.PermisosViewModel;
 import istg.edu.ec.appEmprendeISTGDev.viewModel.UserViewModel;
 import istg.edu.ec.appEmprendeISTGDev.data.model.PerfilModel;
 import istg.edu.ec.appEmprendeISTGDev.utils.DeepLinkManager;
-import androidx.core.view.WindowCompat;
-
 
 import static istg.edu.ec.appEmprendeISTGDev.utils.StatusBarUtilsKt.setStatusBarColor;
 
@@ -75,9 +73,9 @@ public class InicioActivity extends AppCompatActivity {
 
     // --- VARIABLES PARA IN-APP UPDATE ---
     private AppUpdateManager appUpdateManager;
-    private static final int MY_REQUEST_CODE = 100; // Código para la actualización
+    private static final int MY_REQUEST_CODE = 100;
 
-    // --- CÓDIGO NUEVO: Lanzador de permisos ---
+    // --- CÓDIGO NUEVO: Lanzador de permisos (Tu amiga no tiene esto) ---
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
@@ -86,25 +84,22 @@ public class InicioActivity extends AppCompatActivity {
                     Log.d("InicioActivity", "Permiso de notificaciones denegado");
                 }
             });
-    // ------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Esto deshabilita el "edge-to-edge" y restaura el comportamiento anterior.
+        // Ajuste para pantallas edge-to-edge
         WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
 
+        // Barra azul, iconos blancos (false)
         setStatusBarColor(this, R.color.azul_navbar, false);
 
-        // --- INICIAR VERIFICACIÓN DE ACTUALIZACIÓN ---
+        // --- VERIFICACIÓN DE ACTUALIZACIÓN ---
         checkForAppUpdate();
-        // ---
 
-        // --- CÓDIGO NUEVO: Pedir permiso al iniciar ---
-        // Se pone aquí para asegurar que al entrar al Dashboard se verifique el permiso
+        // --- PERMISOS (Vital para Android 13+) ---
         askNotificationPermission();
-        // ----------------------------------------------
 
         // --- Inyección de vistas y ViewModels ---
         sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
@@ -131,7 +126,6 @@ public class InicioActivity extends AppCompatActivity {
                 Menu menu = navigationView.getMenu();
                 menu.findItem(R.id.opcionesAdministradorFragment)
                         .setVisible(esAdmin != null && esAdmin);
-                Log.d("InicioActivity", "Es admin: " + esAdmin);
             });
 
             View headerView = navigationView.getHeaderView(0);
@@ -148,7 +142,6 @@ public class InicioActivity extends AppCompatActivity {
 
         // --- Toolbar & Drawer ---
         setSupportActionBar(binding.appBarInicio.toolbar);
-
         DrawerLayout drawer = binding.drawerLayout;
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.perfilFragment,
@@ -193,7 +186,7 @@ public class InicioActivity extends AppCompatActivity {
             }
         });
 
-        // --- Navigation sin "saltito" ---
+        // --- Navigation Logic ---
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             boolean handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
 
@@ -201,55 +194,48 @@ public class InicioActivity extends AppCompatActivity {
                 navController.navigate(R.id.filtroBusquedaFragment);
                 handled = true;
             }
-
             if (menuItem.getItemId() == R.id.nav_share) {
                 compartirApp();
                 handled = true;
             }
-
             if (handled) {
                 drawer.closeDrawers();
             }
             return handled;
         });
 
-        // --- MANEJO DE DEEP LINK (AGREGADO) ---
-        // Se ejecuta en un `post` para asegurar que la UI esté lista antes de navegar.
+        // --- MANEJO DE DEEP LINK ---
         binding.getRoot().post(() -> {
             DeepLinkManager.INSTANCE.handleIncomingIntent(
                     this,
                     getIntent(),
-                    R.id.nav_host_fragment_content_inicio, // ID del NavHost
-                    R.id.revisarPublicacionesFragment      // Destino para las publicaciones
-            );
-        });
-    }
-
-    // --- MÉTODO NUEVO PARA RECIBIR DEEP LINKS CUANDO LA APP YA ESTÁ ABIERTA ---
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        setIntent(intent); // Es crucial actualizar el intent de la actividad
-
-        // Se vuelve a llamar al handler para procesar el nuevo enlace
-        binding.getRoot().post(() -> {
-            DeepLinkManager.INSTANCE.handleIncomingIntent(
-                    this,
-                    getIntent(), // Usa el intent más reciente
                     R.id.nav_host_fragment_content_inicio,
                     R.id.revisarPublicacionesFragment
             );
         });
     }
 
-    // --- MÉTODO NUEVO PARA VERIFICAR ACTUALIZACIONES ---
+    // --- DEEP LINKS CUANDO LA APP YA ESTÁ ABIERTA ---
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        binding.getRoot().post(() -> {
+            DeepLinkManager.INSTANCE.handleIncomingIntent(
+                    this,
+                    getIntent(),
+                    R.id.nav_host_fragment_content_inicio,
+                    R.id.revisarPublicacionesFragment
+            );
+        });
+    }
+
+    // --- VERIFICAR ACTUALIZACIONES ---
     private void checkForAppUpdate() {
         appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
-
         appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
-            ) {
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
                 try {
                     appUpdateManager.startUpdateFlowForResult(
                             appUpdateInfo,
@@ -258,12 +244,11 @@ public class InicioActivity extends AppCompatActivity {
                             MY_REQUEST_CODE
                     );
                 } catch (Exception e) {
-                    Log.e("InicioActivity", "Error al iniciar flujo de actualización", e);
+                    Log.e("InicioActivity", "Error al iniciar actualización", e);
                 }
             }
         });
     }
-
 
     private void guardarUsuario(FirebaseUser fireuser) {
         if (fireuser == null) return;
@@ -290,8 +275,7 @@ public class InicioActivity extends AppCompatActivity {
     private void compartirApp() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        shareIntent.putExtra(
-                Intent.EXTRA_TEXT,
+        shareIntent.putExtra(Intent.EXTRA_TEXT,
                 "👋 Hola, te invito a descargar *App Emprende ISTG* 🚀 \n" +
                         "👉 Descárgala aquí: https://play.google.com/store/apps/details?id=istg.edu.ec.appEmprendeISTGDev"
         );
@@ -301,17 +285,13 @@ public class InicioActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.inicio, menu);
-
         MenuItem item = menu.findItem(R.id.action_settings);
         SpannableString spanString = new SpannableString(item.getTitle());
-
         int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         boolean isNight = nightModeFlags == Configuration.UI_MODE_NIGHT_YES;
-
         int color = isNight ? Color.WHITE : Color.BLACK;
         spanString.setSpan(new ForegroundColorSpan(color), 0, spanString.length(), 0);
         item.setTitle(spanString);
-
         return true;
     }
 
@@ -338,20 +318,16 @@ public class InicioActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    // --- CÓDIGO NUEVO: Lógica para pedir permisos ---
+    // --- LÓGICA DE PERMISOS (Tu código gana aquí) ---
     private void askNotificationPermission() {
-        // Solo es necesario a partir de Android 13 (API 33)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                // Permiso ya concedido. No se hace nada (o se podría configurar algo).
+                // Permiso ya concedido
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                // El usuario ya lo rechazó antes, se pide de nuevo explicando o lanzando el modal directamente
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
             } else {
-                // Primera vez que se pide
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
             }
         }
     }
-    // ------------------------------------------------
 }
